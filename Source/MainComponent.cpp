@@ -35,11 +35,11 @@ void MainComponent::update()
 void MainComponent::paint (Graphics& g)
 {
     // (Our component is opaque, so we must completely fill the background with a solid colour)
-    g.fillAll (getLookAndFeel().findColour (ResizableWindow::backgroundColourId));
+    g.fillAll (Colours::blue);
     
     g.setColour (Colours::orange);
-//    g.fillRect(rectArea);
-    g.fillEllipse(x.getValue() * getWidth(), y, 100, 100);
+    
+    g.fillRect( (float ) x.getValue() * getWidth(), (float) y, 100.f, 100.f);
     
 }
 
