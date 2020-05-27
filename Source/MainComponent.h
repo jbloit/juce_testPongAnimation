@@ -46,7 +46,7 @@ struct SlowerBouncingNumber  : public BouncingNumber
     This component lives inside our window, and this is where you should put all
     your controls and content.
 */
-class MainComponent   : public AnimatedAppComponent
+class MainComponent   : public AnimatedAppComponent, private OpenGLRenderer
 {
 public:
     //==============================================================================
@@ -68,6 +68,15 @@ private:
     SlowerBouncingNumber x;
 
     int y = 100;
+    
+    
+    void newOpenGLContextCreated() override;
+    void openGLContextClosing() override;
+    void renderOpenGL() override;
+    
+    OpenGLContext openGLContext;
+    
+    void drawBackground2DStuff(float);
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainComponent)
 };
