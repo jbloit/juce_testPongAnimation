@@ -1,11 +1,3 @@
-/*
-  ==============================================================================
-
-    This file was auto-generated!
-
-  ==============================================================================
-*/
-
 #pragma once
 
 #include <JuceHeader.h>
@@ -40,13 +32,12 @@ struct SlowerBouncingNumber  : public BouncingNumber
 };
 
 
-
 //==============================================================================
 /*
     This component lives inside our window, and this is where you should put all
     your controls and content.
 */
-class MainComponent   : public AnimatedAppComponent, private OpenGLRenderer
+class MainComponent   :  public Component, private OpenGLRenderer
 {
 public:
     //==============================================================================
@@ -54,21 +45,16 @@ public:
     ~MainComponent();
 
     //==============================================================================
-    void update() override;
-
-    //==============================================================================
     void paint (Graphics& g) override;
     void resized() override;
 
 private:
     //==============================================================================
-    // Your private member variables go here...
     Rectangle<int> rectArea;
     
+    // moving rectangle coordinates
     SlowerBouncingNumber x;
-
-    int y = 100;
-    
+    int y = 0;
     
     void newOpenGLContextCreated() override;
     void openGLContextClosing() override;
@@ -76,7 +62,7 @@ private:
     
     OpenGLContext openGLContext;
     
-    void drawBackground2DStuff(float);
+    void drawAnimation(float);
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainComponent)
 };
